@@ -37,22 +37,19 @@
 
 <div class="container">
     <div class="row">
-
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div id="main">
                 {% block content %}
                 {% endblock %}
             </div>
         </div>
-
-        <div class="col-md-3 sidebar-bg">
+        <div class="col-md-4 sidebar-bg">
             <div id="sidebar">
                 <h4>Tags</h4>
                 {% for tag in tag_list %}
                     <span class="label label-warning">
-                                <a id="tag" href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
-                            </span>
-                    &nbsp
+                        <a id="tag" href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                    </span>
                     <span class="badge pull-right">{{ tag.taggit_taggeditem_items.count }}</span><br>
                 {% endfor %}
             </div>
@@ -62,7 +59,7 @@
 
     <hr>
     <div id="footer">
-        <small>&copy; 2017-
+        <small>&copy; 2019-
             <script type="text/javascript">document.write(new Date().getFullYear());</script>
             by Xinyu Wen. All rights reserved.
             <a href="mailto:me.xinyuwen@gmail.com">Questions?</a>

@@ -37,13 +37,13 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div id="main">
                 {% block content %}
                 {% endblock %}
             </div>
         </div>
-        <div class="col-md-4 sidebar-bg">
+        <div class="col-md-3 sidebar-bg">
             <div id="sidebar">
                 <h4>Tags</h4>
                 {% for tag in tag_list %}
@@ -60,7 +60,9 @@
     <hr>
     <div id="footer">
         <small>&copy; 2019-
-            <script type="text/javascript">document.write(new Date().getFullYear());</script>
+            <script type="text/javascript">
+                document.write(new Date().getFullYear());
+            </script>
             by Xinyu Wen. All rights reserved.
             <a href="mailto:me.xinyuwen@gmail.com">Questions?</a>
         </small>

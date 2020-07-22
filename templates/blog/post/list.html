@@ -21,12 +21,13 @@
                     </small>
                 </p>
                 <p>
-                    <small class="date"><span class="flask-moment">{{ post.publish }}</span></small>
+                    <small class="date"><span class="flask-moment">on {{ post.publish }}</span></small>
                 </p>
             </div>
             <div class="post_body">
-                <p> {{ post.body|truncatewords:30|linebreaks }}</p>
+                <p> {{ post.body|truncatewords:50|linebreaks }}</p>
             </div>
+            <h5><a id="read_more" href="{{ post.get_url }}">Read more...</a></h5>
             <hr>
         </div>
     {% endfor %}

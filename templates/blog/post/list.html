@@ -5,55 +5,48 @@
     {% for post in posts %}
         <div class="post">
 
-            <h3 class="post-title"><a id="post_title" href="{{ post.get_url }}">{{ post.title }}</a></h3>
+            <h3 style="padding-bottom: 20px;"><a class="text-decoration-none text-dark" href="{{ post.get_url }}">{{ post.title }}</a></h3>
             <div class="posted">
-                <p>
-                    <small>Posted by
+                <div>
+                    <small class="font-italic">Posted by
                         <code>{{ post.author }}</code>
+
+                    </small>
+                    <small class="date font-italic"><span class="flask-moment"> on {{ post.publish }}</span></small>
+                    <small class="font-italic">
                         {% if post.tags.count %}
                             Tags
                             {% for tag in post.tags.all %}
-                                <span class="label label-warning">
+                                <span>
                             <a id="tag" href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
                         </span>
                             {% endfor %}
                         {% endif %}
                     </small>
-                </p>
-                <p>
-                    <small class="date"><span class="flask-moment">on {{ post.publish }}</span></small>
-                </p>
+                </div>
             </div>
-            <div class="post_body">
+            <div class="post_body font-weight-light">
                 <p> {{ post.body|truncatewords:50|linebreaks }}</p>
             </div>
-            <h5><a id="read_more" href="{{ post.get_url }}">Read more...</a></h5>
-            <hr>
+            <small class="font-italic"><a class="text-decoration-none" href="{{ post.get_url }}">Read more...</a></small>
+            <hr style="padding-bottom: 20px;">
         </div>
     {% endfor %}
 
-    <div class="page">
-        <ul class="pager">
-            {% if posts.has_previous %}
-                <li class="previous">
-                    <a href="?page={{ posts.previous_page_number }}">Previous</a>
-                </li>
-            {% else %}
-                <li class="previous disabled">
-                    <a href="#">Previous</a>
-                </li>
-            {% endif %}
+    <nav class="blog-pagination">
+        {% if posts.has_previous %}
+            <a class="btn btn-outline-primary" href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% else %}
+            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        {% endif %}
 
-            {% if posts.has_next %}
-                <li class="next">
-                    <a href="?page={{ posts.next_page_number }}">Next</a>
-                </li>
-            {% else %}
-                <li class="next disabled">
-                    <a href="#">Next</a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
+        {% if posts.has_next %}
+            <a class="btn btn-outline-primary float-right" href="?page={{ posts.next_page_number }}">Next</a>
+        {% else %}
+            <a class="btn btn-outline-secondary float-right disabled" href="#" tabindex="-1"
+               aria-disabled="true">Next</a>
+        {% endif %}
+
+    </nav>
 
 {% endblock %}

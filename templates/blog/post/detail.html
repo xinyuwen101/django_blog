@@ -7,7 +7,7 @@
                                             href="{{ post.get_url }}">{{ post.title }}</a>
         </h3>
 
-        <div>
+        <div style="margin-bottom: 30px;">
             <small class="font-italic">Posted by
                 <code>{{ post.author }}</code>
                 <span class="flask-moment"> on {{ post.publish }}</span>
@@ -20,8 +20,6 @@
                 {% endif %}
             </small>
         </div>
-
-        <hr>
 
         <div class="font-weight-light">{{ post.body|linebreaks }}
         </div>
@@ -40,21 +38,21 @@
         <hr>
 
         {% with comments.count as total_comments %}
-            <h4><a name="comments"></a> {{ total_comments }}
+            <h4>{{ total_comments }}
                 comment{{ total_comments|pluralize }}
             </h4>
         {% endwith %}
 
         <div style="margin-top: 20px;">
             {% for comment in comments %}
-                    <small class="font-italic">
-                        <span class="badge badge-warning">#{{ forloop.counter }}</span>
-                        <code>{{ comment.username }}</code>
-                        {{ comment.created }}
-                    </small>
-                    <div class="font-weight-light" style="margin-top: 20px;">
-                        {{ comment.body }}
-                    </div>
+                <small class="font-italic">
+                    <span class="badge badge-warning">#{{ forloop.counter }}</span>
+                    <code>{{ comment.username }}</code>
+                    {{ comment.created }}
+                </small>
+                <div class="font-weight-light" style="margin-top: 10px; margin-bottom: 10px;">
+                    {{ comment.body }}
+                </div>
             {% empty %}
                 <div>There are no comments yet.</div>
             {% endfor %}
@@ -62,13 +60,15 @@
             <hr>
 
             {% if new_comment %}
-                <h2>Your comment has been added.</h2>
+                <h3>Your comment has been added!</h3>
             {% else %}
-                <h3><a name="commentform"></a>Leave a Comment</h3>
-                <form action="#commentform" method="post">
+                <h3>Leave a Comment</h3>
+                <form method="post">
+                <div class="form-group">
                     {{ comment_form.as_p }}
                     {% csrf_token %}
                     <p><input type="submit" value="Add comment"></p>
+                </div>
                 </form>
             {% endif %}
         </div>

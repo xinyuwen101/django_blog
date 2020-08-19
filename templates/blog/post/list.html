@@ -2,10 +2,13 @@
 
 {% block content %}
 
+
     <div>
+        <!-- Blog list -->
         {% for post in posts %}
-            <h3 style="margin-bottom: 20px;"><a class="text-decoration-none text-dark"
-                                                href="{{ post.get_url }}">{{ post.title }}</a>
+            <h3 style="margin-bottom: 20px;">
+                <a class="text-decoration-none text-dark"
+                   href="{{ post.get_url }}">{{ post.title }}</a>
             </h3>
 
             <div style="margin-bottom: 30px;">
@@ -32,6 +35,7 @@
             <hr>
         {% endfor %}
 
+        <!-- Page turner -->
         <nav style="text-align: center">
             {% if posts.has_previous %}
                 <a class="btn btn-outline-primary" href="?page={{ posts.previous_page_number }}">Previous</a>

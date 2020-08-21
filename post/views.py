@@ -24,7 +24,7 @@ def post_list(request, tag_slug=None):
 
     return render(
         request,
-        'blog/post/list.html',
+        'post/list.html',
         {
             'posts': posts,
             'tag_list': tag_list
@@ -53,7 +53,7 @@ def post_detail(request, year, month, day, slug):
 
     return render(
         request,
-        'blog/post/detail.html',
+        'post/detail.html',
         {
             'post': post,
             'comments': comments,

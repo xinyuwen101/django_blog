@@ -16,7 +16,7 @@
                     Tags
                     {% for tag in post.tags.all %}
                         <a href="{% url "post:post_list_by_tag" tag.slug %}"
-                           class="badge badge-primary text-white text-decoration-none">{{ tag.name }}</a>
+                           class="badge badge-primary text-white text-decoration-none p-1">{{ tag.name }}</a>
                     {% endfor %}
                 {% endif %}
             </small>

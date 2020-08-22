@@ -38,7 +38,8 @@
                 <a class="nav-link text-light" href="{% url "post:post_list" %}">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle text-light" href="#" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true"
                    aria-expanded="false">More</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">About me</a>
@@ -55,7 +56,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div style="padding-top: 20px; padding-bottom: 40px;">
+            <div class="py-4">
                 {% block content %}
                 {% endblock %}
             </div>
@@ -63,15 +64,14 @@
 
         <!-- Sider -->
         <div class="col-md-4">
-            <div class="jumbotron">
-                <h3 class="text-center" style="padding-bottom: 20px;">Tags</h3>
-                <div style="text-align: center">
+            <div class="jumbotron text-center">
+                <h4 class="py-3">Tags</h4>
+                <div>
                     {% for tag in tag_list %}
-                        <button type="button" class="btn btn-outline-primary" style="margin-bottom: 5px;">
-                            <a class="text-decoration-none text-dark"
-                               href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
-                            <span class="badge badge-secondary">{{ tag.taggit_taggeditem_items.count }}</span>
-                        </button>
+                        <a class="btn btn-primary my-1"
+                           href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
+                            <span class="badge badge-light">{{ tag.taggit_taggeditem_items.count }}</span>
+                        </a>
                     {% endfor %}
                 </div>
             </div>

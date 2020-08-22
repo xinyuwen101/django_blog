@@ -3,11 +3,12 @@
 {% block content %}
 
     <div>
-        <h3 style="margin-bottom: 20px;"><a class="text-decoration-none text-dark"
-                                            href="{{ post.get_url }}">{{ post.title }}</a>
+        <!-- Post title -->
+        <h3><a class="text-decoration-none text-dark"
+               href="{{ post.get_url }}">{{ post.title }}</a>
         </h3>
 
-        <div style="margin-bottom: 30px;">
+        <div>
             <small class="font-italic">Posted by
                 <code>{{ post.author }}</code>
                 <span class="flask-moment"> on {{ post.publish }}</span>
@@ -21,54 +22,58 @@
             </small>
         </div>
 
-        <div class="font-weight-light">{{ post.body|linebreaks }}
+        <!-- Post body -->
+        <div class="font-weight-light">
+            <p>{{ post.body|linebreaks }}</p>
         </div>
 
-        <hr>
+        <!-- Similar posts -->
+        <div class="my-3">
+            <h4>Similar posts</h4>
+            {% for post in post.tags.similar_objects %}
+                <div class="font-weight-light">
+                    <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
+                </div>
+            {% empty %}
+                There are no similar posts yet.
+            {% endfor %}
+        </div>
 
-        <h4>Similar posts</h4>
-        {% for post in post.tags.similar_objects %}
-            <div class="font-weight-light">
-                <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
-            </div>
-        {% empty %}
-            There are no similar posts yet.
-        {% endfor %}
-
-        <hr>
-
-        {% with comments.count as total_comments %}
-            <h4>{{ total_comments }}
-                comment{{ total_comments|pluralize }}
-            </h4>
-        {% endwith %}
-
-        <div style="margin-top: 20px;">
+        <!-- Comments -->
+        <div class="my-3">
+            {% with comments.count as total_comments %}
+                <h4>{{ total_comments }}
+                    comment{{ total_comments|pluralize }}
+                </h4>
+            {% endwith %}
             {% for comment in comments %}
                 <small class="font-italic">
                     <span class="badge badge-warning">#{{ forloop.counter }}</span>
                     <code>{{ comment.username }}</code>
                     {{ comment.created }}
                 </small>
-                <div class="font-weight-light" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="font-weight-light my-1">
                     {{ comment.body }}
                 </div>
             {% empty %}
                 <div>There are no comments yet.</div>
             {% endfor %}
+        </div>
 
-            <hr>
-
+        <!-- New comment -->
+        <div class="my-3">
             {% if new_comment %}
+                <hr class="my-4">
                 <h3>Your comment has been added!</h3>
+                <script>window.scrollTo(0,document.body.scrollHeight);</script>
             {% else %}
                 <h3>Leave a Comment</h3>
                 <form method="post">
-                <div class="form-group">
-                    {{ comment_form.as_p }}
-                    {% csrf_token %}
-                    <p><input type="submit" value="Add comment"></p>
-                </div>
+                    <div class="form-group">
+                        {{ comment_form.as_p }}
+                        {% csrf_token %}
+                        <p><input type="submit" value="Add comment"></p>
+                    </div>
                 </form>
             {% endif %}
         </div>

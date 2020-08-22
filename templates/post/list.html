@@ -6,12 +6,12 @@
     <div>
         <!-- Blog list -->
         {% for post in posts %}
-            <h3 style="margin-bottom: 20px;">
+            <h3>
                 <a class="text-decoration-none text-dark"
                    href="{{ post.get_url }}">{{ post.title }}</a>
             </h3>
 
-            <div style="margin-bottom: 30px;">
+            <div>
                 <small class="font-italic">Posted by
                     <code>{{ post.author }}</code>
                     <span class="flask-moment"> on {{ post.publish }}</span>
@@ -29,14 +29,15 @@
                 <p> {{ post.body|truncatewords:50|linebreaks }}</p>
             </div>
 
-            <small class="font-italic"><a class="text-decoration-none" href="{{ post.get_url }}">Read
-                more...</a></small>
+            <div class="mb-4">
+                <small class="font-italic"><a class="text-decoration-none" href="{{ post.get_url }}">Read
+                    more...</a></small>
+            </div>
 
-            <hr>
         {% endfor %}
 
         <!-- Page change button -->
-        <nav style="text-align: center">
+        <nav class="text-center">
             {% if posts.has_previous %}
                 <a class="btn btn-outline-primary" href="?page={{ posts.previous_page_number }}">Previous</a>
             {% else %}

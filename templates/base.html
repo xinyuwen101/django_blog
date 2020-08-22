@@ -28,7 +28,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="{% url "post:post_list" %}">
-        <img src="{% static "img/android-chrome-192x192.png" %}" alt="Logo" width="35" height="35">
+        <img src="{% static "img/android-chrome-192x192.png" %}" alt="Logo" width="40" height="40">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,11 +36,11 @@
     </button>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url "post:post_list" %}">Home</a>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url "post:post_list" %}">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle text-light" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">More</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">About me</a>

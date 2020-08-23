@@ -23,7 +23,7 @@
 
 <body class="d-flex flex-column h-100">
 
-<!-- Navbar -->
+<!-- Nav -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="{% url "post:post_list" %}">
         <img src="{% static "img/android-chrome-192x192.png" %}" alt="Logo" width="40" height="40">
@@ -52,9 +52,10 @@
     </div>
 </nav>
 
-<!-- Main content -->
-<div class="container">
+<!-- Main -->
+<main class="container">
     <div class="row">
+        <!-- Main -->
         <div class="col-md-8">
             <div class="py-4">
                 {% block content %}
@@ -62,9 +63,9 @@
             </div>
         </div>
 
-        <!-- Sider -->
+        <!-- Side -->
         <div class="col-md-4 text-center px-4">
-        <h3 class="py-4">Tags</h3>
+            <h3 class="py-4">Tags</h3>
             <div class="jumbotron border border-secondary bg-light">
                 <div>
                     {% for tag in tag_list %}
@@ -77,7 +78,7 @@
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <!-- Footer -->
 <footer class="footer mt-auto py-3 bg-light">

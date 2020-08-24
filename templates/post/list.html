@@ -37,19 +37,25 @@
         {% endfor %}
 
         <!-- Page buttons -->
-        <nav class="text-center">
-            {% if posts.has_previous %}
-                <a class="btn btn-outline-primary" href="?page={{ posts.previous_page_number }}">Previous</a>
-            {% else %}
-                <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            {% endif %}
-
-            {% if posts.has_next %}
-                <a class="btn btn-outline-primary" href="?page={{ posts.next_page_number }}">Next</a>
-            {% else %}
-                <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1"
-                   aria-disabled="true">Next</a>
-            {% endif %}
+        <nav class="py-3">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a></li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                {% endif %}
+                <li class="page-item disabled">
+                    <span class="page-link text-dark">{{ posts.number }} / {{ posts.paginator.num_pages }}</span></li>
+                {% if posts.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ posts.next_page_number }}">Next</a></li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+                {% endif %}
+            </ul>
         </nav>
     </div>
 

@@ -69,7 +69,7 @@
             <div class="jumbotron border border-secondary bg-light">
                 <div>
                     {% for tag in tag_list %}
-                        <a class="btn btn-primary my-1"
+                        <a class="btn btn-outline-primary my-1"
                            href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
                             <span class="badge badge-light">{{ tag.taggit_taggeditem_items.count }}</span>
                         </a>

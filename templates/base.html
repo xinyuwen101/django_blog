@@ -71,7 +71,7 @@
                     {% for tag in tag_list %}
                         <a class="btn btn-outline-primary my-1"
                            href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
-                            <span class="badge badge-light">{{ tag.taggit_taggeditem_items.count }}</span>
+                            <span class="badge badge-secondary badge-pill">{{ tag.taggit_taggeditem_items.count }}</span>
                         </a>
                     {% endfor %}
                 </div>

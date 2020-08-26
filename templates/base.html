@@ -63,15 +63,15 @@
             </div>
         </div>
 
-        <!-- Side -->
-        <div class="col-md-4 text-center px-4">
+        <!-- Sidebar -->
+        <div class="col-md-4 text-center">
             <h3 class="py-4">Tags</h3>
             <div class="jumbotron border border-secondary bg-light">
                 <div>
                     {% for tag in tag_list %}
-                        <a class="btn btn-outline-primary my-1"
+                        <a class="btn btn-outline-primary my-1 mx-1"
                            href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
-                            <span class="badge badge-secondary badge-pill">{{ tag.taggit_taggeditem_items.count }}</span>
+                            <span class="badge badge-secondary">{{ tag.taggit_taggeditem_items.count }}</span>
                         </a>
                     {% endfor %}
                 </div>

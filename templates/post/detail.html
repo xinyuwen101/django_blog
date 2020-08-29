@@ -67,7 +67,7 @@
             <h4 class="mb-3">New comment</h4>
             <form method="post">
                 {% csrf_token %}
-                {% bootstrap_form comment_form layout='inline' %}
+                {% bootstrap_form comment_form %}
                 {% buttons %}
                     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                 {% endbuttons %}

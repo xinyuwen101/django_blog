@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 
@@ -41,12 +41,14 @@ def post_detail(request, year, month, day, slug):
     ).first()
     comments = post.comments.filter(active=True)
     new_comment = None
+
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
             new_comment.save()
+            return redirect('post:post_detail', year=year, month=month, day=day, slug=slug)
     else:
         comment_form = CommentForm()
     tag_list = Tag.objects.all()

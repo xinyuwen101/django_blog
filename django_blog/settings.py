@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'post.apps.PostConfig',
     'taggit',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

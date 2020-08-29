@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
 {% block content %}
 
     <div>
@@ -26,7 +31,7 @@
         <div class="font-weight-light">
             <p>{{ post.body|linebreaks }}</p>
         </div>
-    <hr class="my-4">
+        <hr class="my-5">
 
         <!-- Similar posts -->
         <div class="my-3">
@@ -36,17 +41,13 @@
                     <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
                 </div>
             {% empty %}
-                There are no similar posts yet.
+                <p class="text-secondary font-italic font-weight-light">There are no similar posts yet.</p>
             {% endfor %}
         </div>
 
-        <!-- Comments -->
-        <div class="my-3">
-            {% with comments.count as total_comments %}
-                <h4>{{ total_comments }}
-                    comment{{ total_comments|pluralize }}
-                </h4>
-            {% endwith %}
+        <!-- Comment list -->
+        <div class="my-5">
+                <h4>Comments</h4>
             {% for comment in comments %}
                 <small class="font-italic">
                     <span class="badge badge-warning">#{{ forloop.counter }}</span>
@@ -61,22 +62,16 @@
             {% endfor %}
         </div>
 
-        <!-- New comment -->
-        <div class="my-3">
-            {% if new_comment %}
-                <hr class="my-4">
-                <h3>Your comment has been added!</h3>
-                <script>window.scrollTo(0,document.body.scrollHeight);</script>
-            {% else %}
-                <h3>Leave a Comment</h3>
-                <form method="post">
-                    <div class="form-group">
-                        {{ comment_form.as_p }}
-                        {% csrf_token %}
-                        <p><input type="submit" value="Add comment"></p>
-                    </div>
-                </form>
-            {% endif %}
+        <!-- Comment form -->
+        <div class="my-5">
+            <h4 class="mb-3">New comment</h4>
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form comment_form layout='inline' %}
+                {% buttons %}
+                    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                {% endbuttons %}
+            </form>
         </div>
     </div>
 {% endblock %}

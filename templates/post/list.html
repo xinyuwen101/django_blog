@@ -47,7 +47,7 @@
                 {% endif %}
                 <li class="page-item disabled">
                     <span class="page-link text-dark">
-                        Page {{ posts.number }} / {{ posts.paginator.num_pages }}</span></li>
+                        {{ posts.number }} / {{ posts.paginator.num_pages }}</span></li>
                 {% if posts.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ posts.next_page_number }}">Next &raquo;</a></li>

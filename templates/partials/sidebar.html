@@ -1,0 +1,13 @@
+{% load static %}
+
+<h3 class="py-4">Tags</h3>
+<div class="jumbotron border border-secondary bg-white shadow-sm">
+    <div>
+        {% for tag in tag_list %}
+            <a class="btn btn-outline-primary my-1 mx-1"
+               href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
+                <span class="badge badge-secondary">{{ tag.taggit_taggeditem_items.count }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</div>

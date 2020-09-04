@@ -1,8 +1,9 @@
 {% load static %}
 
-<h3 class="py-4">Tags</h3>
-<div class="jumbotron border border-secondary bg-white shadow-sm">
-    <div>
+<div class="jumbotron border border-secondary bg-white shadow-sm py-5">
+    <h3 class="mb-5">Tags</h3>
+<hr>
+    <div class="container my-5">
         {% for tag in tag_list %}
             <a class="btn btn-outline-primary my-1 mx-1"
                href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}

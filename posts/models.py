@@ -36,7 +36,7 @@ class Post(models.Model):
 
     def get_url(self):
         return reverse(
-            'post:post_detail',
+            'posts:post_detail',
             args=[
                 self.publish.year,
                 self.publish.month,
@@ -47,7 +47,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(
+    posts = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
         related_name='comments'
@@ -63,4 +63,4 @@ class Comment(models.Model):
         ordering = ('-created',)
 
     def __str__(self):
-        return 'Comment by {} on {}'.format(self.username, self.post)
+        return 'Comment by {} on {}'.format(self.username, self.posts)

@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ posts.title }}{% endblock %}
 
 {% block content %}
 
     <div>
         <!-- Post title -->
         <h3><a class="text-decoration-none text-dark"
-               href="{{ post.get_url }}">{{ post.title }}</a>
+               href="{{ posts.get_url }}">{{ posts.title }}</a>
         </h3>
 
         <div>
             <small class="font-italic">Posted by
-                <code>{{ post.author }}</code>
-                <span class="flask-moment"> on {{ post.publish }}</span>
-                {% if post.tags.count %}
+                <code>{{ posts.author }}</code>
+                <span class="flask-moment"> on {{ posts.publish }}</span>
+                {% if posts.tags.count %}
                     Tags
-                    {% for tag in post.tags.all %}
-                        <a href="{% url "post:post_list_by_tag" tag.slug %}"
+                    {% for tag in posts.tags.all %}
+                        <a href="{% url "posts:post_list_by_tag" tag.slug %}"
                            class="badge badge-primary text-white text-decoration-none p-1">{{ tag.name }}</a>
                     {% endfor %}
                 {% endif %}
@@ -26,16 +26,16 @@
 
         <!-- Post body -->
         <div class="font-weight-light">
-            <p>{{ post.body|linebreaks }}</p>
+            <p>{{ posts.body|linebreaks }}</p>
         </div>
         <hr class="my-5">
 
         <!-- Similar posts -->
         <div class="my-3">
             <h4>Similar posts</h4>
-            {% for post in post.tags.similar_objects %}
+            {% for post in posts.tags.similar_objects %}
                 <div class="font-weight-light">
-                    <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
+                    <a class="text-decoration-none" href="{{ posts.get_url }}">{{ posts.title }}</a>
                 </div>
             {% empty %}
                 <p class="text-secondary font-italic font-weight-light">There are no similar posts yet.</p>
@@ -65,7 +65,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Your Name</label>
                     <input type="text" name="username" id="username" class="form-control" required>
                 </div>
                 <div class="form-group">

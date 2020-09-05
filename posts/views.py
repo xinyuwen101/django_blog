@@ -24,7 +24,7 @@ def post_list(request, tag_slug=None):
 
     return render(
         request,
-        'post/list.html',
+        'posts/list.html',
         {
             'posts': posts,
             'tag_list': tag_list
@@ -33,31 +33,31 @@ def post_list(request, tag_slug=None):
 
 
 def post_detail(request, year, month, day, slug):
-    post = Post.objects.filter(
+    posts = Post.objects.filter(
         publish__year=year,
         publish__month=month,
         publish__day=day,
         slug=slug
     ).first()
-    comments = post.comments.filter(active=True)
+    comments = posts.comments.filter(active=True)
     new_comment = None
 
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
-            new_comment.post = post
+            new_comment.posts = posts
             new_comment.save()
-            return redirect('post:post_detail', year=year, month=month, day=day, slug=slug)
+            return redirect('posts:post_detail', year=year, month=month, day=day, slug=slug)
     else:
         comment_form = CommentForm()
     tag_list = Tag.objects.all()
 
     return render(
         request,
-        'post/detail.html',
+        'posts/detail.html',
         {
-            'post': post,
+            'posts': posts,
             'comments': comments,
             'new_comment': new_comment,
             'comment_form': comment_form,

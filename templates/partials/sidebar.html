@@ -6,7 +6,7 @@
     <div class="container my-5">
         {% for tag in tag_list %}
             <a class="btn btn-outline-primary my-1 mx-1"
-               href="{% url "post:post_list_by_tag" tag.slug %}">{{ tag.name }}
+               href="{% url "posts:post_list_by_tag" tag.slug %}">{{ tag.name }}
                 <span class="badge badge-secondary">{{ tag.taggit_taggeditem_items.count }}</span>
             </a>
         {% endfor %}

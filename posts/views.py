@@ -27,7 +27,8 @@ def post_list(request, tag_slug=None):
         'posts/list.html',
         {
             'posts': posts,
-            'tag_list': tag_list
+            'tag_list': tag_list,
+            'tag_slug': tag_slug,
         }
     )
 

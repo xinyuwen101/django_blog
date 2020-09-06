@@ -5,6 +5,16 @@
 {% block content %}
 
     <div>
+        <!-- Tag -->
+        {% if tag_slug %}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url "posts:post_list" %}">All</a></li>
+                    <li class="breadcrumb-item"><a href="">{{ tag_slug|title }}</a></li>
+                </ol>
+            </nav>
+        {% endif %}
+
         <!-- Blog list -->
         {% for post in posts %}
             <h3>
@@ -15,7 +25,7 @@
             <div>
                 <small class="font-italic">Posted by
                     <code>{{ post.author }}</code>
-                    <span class="flask-moment"> on {{ post.publish }}</span>
+                    <span> on {{ post.publish }}</span>
                     {% if post.tags.count %}
                         Tags
                         {% for tag in post.tags.all %}

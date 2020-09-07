@@ -1,9 +1,9 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
     <div class="container">
         <a class="navbar-brand" href="{% url "posts:post_list" %}">
-            <img src="{% static "img/android-chrome-512x512.png" %}" alt="Logo" width="40" height="40">
+            <img src="{% static "img/android-chrome-512x512.png" %}" alt="Logo" width="30" height="30">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,10 +12,10 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url "posts:post_list" %}">Home</a>
+                    <a class="nav-link text-dark" href="{% url "posts:post_list" %}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="dropdown01" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdown01" data-toggle="dropdown"
                        aria-haspopup="true"
                        aria-expanded="false">More</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">

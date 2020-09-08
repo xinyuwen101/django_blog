@@ -7,6 +7,7 @@ from .forms import CommentForm
 
 
 def post_list(request, tag_slug=None):
+    tag = None
     if tag_slug:
         tag = Tag.objects.filter(slug=tag_slug).first()
         all_posts = Post.objects.filter(tags__in=[tag])
@@ -29,6 +30,7 @@ def post_list(request, tag_slug=None):
             'posts': posts,
             'tag_list': tag_list,
             'tag_slug': tag_slug,
+            'tag': tag,
         }
     )
 

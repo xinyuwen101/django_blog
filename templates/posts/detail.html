@@ -4,13 +4,13 @@
 
 {% block content %}
 
-    <div>
+    <div class="my-5">
         <!-- Post title -->
-        <h3><a class="text-decoration-none text-dark"
-               href="{{ posts.get_url }}">{{ posts.title }}</a>
-        </h3>
-
         <div>
+        <a class="h2 text-decoration-none text-dark"
+           href="{{ posts.get_url }}">{{ posts.title }}</a>
+</div>
+        <div class="mt-4">
             <small class="font-italic">Posted by
                 <code>{{ posts.author }}</code>
                 <span class="flask-moment"> on {{ posts.publish }}</span>
@@ -35,7 +35,7 @@
             <h4>Similar posts</h4>
             {% for post in posts.tags.similar_objects %}
                 <div class="font-weight-light">
-                    <a class="text-decoration-none" href="{{ posts.get_url }}">{{ posts.title }}</a>
+                    <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
                 </div>
             {% empty %}
                 <p class="text-secondary font-italic font-weight-light">There are no similar posts yet.</p>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Comment form -->
-        <div class="my-5 col-md-8">
+        <div class="my-5 col-md-8 pl-0">
             <h4 class="mb-3">New comment</h4>
             <form method="POST">
                 {% csrf_token %}

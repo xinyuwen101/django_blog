@@ -44,7 +44,7 @@
 
         <!-- Comment list -->
         <div class="my-5">
-            <h4>Comments</h4>
+            <h4>Comments ({{ comments.count }})</h4>
             {% for comment in comments %}
                 <small class="font-italic">
                     <span class="badge badge-warning">#{{ forloop.counter }}</span>
@@ -65,14 +65,14 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username">Your Name</label>
-                    <input type="text" name="username" id="username" class="form-control" required>
+{#                    <label for="username">Your Name</label>#}
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="comment">Comment</label>
-                    <textarea name="body" id="comment" class="form-control" rows="6" required></textarea>
+{#                    <label for="comment">Comment</label>#}
+                    <textarea name="body" id="comment" class="form-control" rows="6" placeholder="Comment" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Submit a new comment</button>
             </form>
         </div>
     </div>

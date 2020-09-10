@@ -34,7 +34,7 @@
             <h4>Similar posts</h4>
             {% for post in posts.tags.similar_objects %}
                 <div class="font-weight-light">
-                    <a class="text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
+                    <a href="{{ post.get_url }}">{{ post.title }}</a>
                 </div>
             {% empty %}
                 <p class="text-secondary font-italic font-weight-light">There are no similar posts yet.</p>

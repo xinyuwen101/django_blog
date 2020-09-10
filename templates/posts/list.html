@@ -10,7 +10,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url "posts:post_list" %}">All</a></li>
-                    <li class="breadcrumb-item"><a href="">{{ tag_slug|title }}</a></li>
+                    <li class="breadcrumb-item">{{ tag_slug|title }}</li>
                     <li class="ml-auto font-weight-light font-italic">
                         Total: {{ tag.taggit_taggeditem_items.count }}
                         post{{ tag.taggit_taggeditem_items.count|pluralize }}</li>
@@ -23,7 +23,7 @@
         <!-- Blog list -->
         <div class="mt-4">
             {% for post in posts %}
-                <h3>
+                <h3 class="mt-4">
                     <a class="text-dark" href="{{ post.get_url }}">{{ post.title }}</a>
                 </h3>
 
@@ -42,19 +42,15 @@
                     </small>
                 </div>
 
-                <div class="font-weight-light">
-                    <p> {{ post.body|truncatewords:30|linebreaks }}</p>
-                </div>
+                <div class="font-weight-light"><p> {{ post.body|truncatewords:30|linebreaks }}</p></div>
 
-                <div class="mb-4">
-                    <a class="font-italic small" href="{{ post.get_url }}">Read more...</a>
-                </div>
+                <div><a class="font-italic small" href="{{ post.get_url }}">Read more...</a></div>
 
             {% endfor %}
         </div>
 
         <!-- Pagination -->
-        <nav class="py-3">
+        <nav class="mt-4">
             <ul class="pagination justify-content-center">
                 {% if posts.has_previous %}
                     <li class="page-item">

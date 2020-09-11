@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item"><a href="{% url "posts:post_list" %}">All</a></li>
                     <li class="breadcrumb-item">{{ tag_slug|title }}</li>
                     <li class="ml-auto font-weight-light font-italic">
-                        Total: {{ tag.taggit_taggeditem_items.count }}
+                        {{ tag.taggit_taggeditem_items.count }}
                         post{{ tag.taggit_taggeditem_items.count|pluralize }}</li>
                 </ol>
             </nav>

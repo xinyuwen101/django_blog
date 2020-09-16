@@ -24,7 +24,7 @@
         </div>
 
         <!-- Post body -->
-        <div class="font-weight-light mt-5">
+        <div class="mt-5">
             <p>{{ posts.body|linebreaks }}</p>
         </div>
         <hr class="mt-5">
@@ -33,11 +33,11 @@
         <div class="mt-5">
             <h4>Similar posts</h4>
             {% for post in posts.tags.similar_objects %}
-                <div class="font-weight-light">
+                <div>
                     <a href="{{ post.get_url }}">{{ post.title }}</a>
                 </div>
             {% empty %}
-                <p class="text-secondary font-italic font-weight-light">There are no similar posts yet.</p>
+                <p class="text-secondary font-italic">There are no similar posts yet.</p>
             {% endfor %}
         </div>
 
@@ -50,11 +50,11 @@
                     <code>{{ comment.username }}</code>
                     {{ comment.created }}
                 </small>
-                <div class="font-weight-light my-1">
+                <div class="my-1">
                     {{ comment.body }}
                 </div>
             {% empty %}
-                <p class="text-secondary font-italic font-weight-light">There are no comments yet.</p>
+                <p class="text-secondary font-italic">There are no comments yet.</p>
             {% endfor %}
         </div>
 

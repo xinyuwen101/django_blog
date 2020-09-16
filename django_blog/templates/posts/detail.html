@@ -9,10 +9,10 @@
         <div>
             <h2 class="text-dark">{{ posts.title }}</h2>
         </div>
-        <div class="mt-4">
+        <div class="mt-2">
             <small class="font-italic">Posted by
                 <code>{{ posts.author }}</code>
-                <span class="flask-moment"> on {{ posts.publish }}</span>
+                <span> on {{ posts.publish }}</span>
                 {% if posts.tags.count %}
                     Tags
                     {% for tag in posts.tags.all %}
@@ -24,13 +24,13 @@
         </div>
 
         <!-- Post body -->
-        <div class="font-weight-light">
+        <div class="font-weight-light mt-5">
             <p>{{ posts.body|linebreaks }}</p>
         </div>
-        <hr class="my-5">
+        <hr class="mt-5">
 
         <!-- Similar posts -->
-        <div class="my-3">
+        <div class="mt-5">
             <h4>Similar posts</h4>
             {% for post in posts.tags.similar_objects %}
                 <div class="font-weight-light">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Comment list -->
-        <div class="my-5">
+        <div class="mt-5">
             <h4>Comments ({{ comments.count }})</h4>
             {% for comment in comments %}
                 <small class="font-italic">
@@ -59,18 +59,17 @@
         </div>
 
         <!-- Comment form -->
-        <div class="my-5 col-md-8 pl-0">
-            <h4 class="mb-3">Submit a new comment</h4>
+        <div class="mt-5 col-md-8 pl-0">
+            <h4 class="mb-4">Submit a new comment</h4>
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    {#                    <label for="username">Your Name</label>#}
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Name" required>
+                    <label for="username">Your Name</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    {#                    <label for="comment">Comment</label>#}
-                    <textarea name="body" id="comment" class="form-control" rows="6" placeholder="Comment"
-                              required></textarea>
+                    <label for="comment">Comment</label>
+                    <textarea name="body" id="comment" class="form-control" rows="6" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>

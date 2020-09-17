@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  db:
+    container_name: db_0
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=admin2349
+    ports:
+      - "5432:5432"
+    restart: always
+
+  web:
+    container_name: web_0
+    build: ./django_blog
+    expose:
+      - "8000"
+    volumes:
+      - ./django_blog:/var/www/html/django_blog
+    environment:
+      - DEBUG=False
+    restart: always
+    tty: true
+    stdin_open: true
+
+  nginx:
+    container_name: nginx_0
+    build: ./nginx
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    volumes:
+      - ./django_blog/static:/usr/share/nginx/html/static
+    links:
+      - web
+    depends_on:
+      - web
+    restart: always

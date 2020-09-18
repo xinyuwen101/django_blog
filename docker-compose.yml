@@ -8,9 +8,9 @@ services:
     container_name: db_0
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=admin2349
+      - POSTGRES_PASSWORD=password
     volumes:
-      - db_vol:/var/lib/postgresql/data/
+      - db_vol:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: always

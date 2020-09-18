@@ -1,0 +1,1 @@
+sudo docker exec -it web_0 /bin/bash start.sh

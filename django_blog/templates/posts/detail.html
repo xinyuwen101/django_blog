@@ -10,7 +10,7 @@
             <h2 class="text-dark">{{ posts.title }}</h2>
         </div>
         <div class="mt-2">
-            <small class="font-italic">Posted by
+            <small class="font-italic text-secondary">Posted by
                 <code>{{ posts.author }}</code>
                 <span> on {{ posts.publish }}</span>
                 {% if posts.tags.count %}
@@ -22,11 +22,10 @@
                 {% endif %}
             </small>
         </div>
+        <hr class="my-5">
 
         <!-- Post body -->
-        <div class="mt-5">
-            <p>{{ posts.body|linebreaks }}</p>
-        </div>
+        <p>{{ posts.body|safe|linebreaks }}</p>
         <hr class="mt-5">
 
         <!-- Similar posts -->
@@ -64,12 +63,17 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username">Your Name</label>
-                    <input type="text" name="username" id="username" class="form-control" required>
+                    {#                    <label for="name">Your Name</label>#}
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="comment">Comment</label>
-                    <textarea name="body" id="comment" class="form-control" rows="6" required></textarea>
+                    {#                    <label for="email">Email</label>#}
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    {#                    <label for="comment">Comment</label>#}
+                    <textarea name="body" id="comment" class="form-control" rows="6" placeholder="Comment"
+                              required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>

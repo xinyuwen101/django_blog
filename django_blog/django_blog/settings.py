@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts.apps.PostConfig',
     'taggit',
+    'markdown',
 ]
 
 MIDDLEWARE = [

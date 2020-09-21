@@ -7,13 +7,8 @@ from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
-    STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-    )
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250,
-                            unique_for_date='publish')
+    slug = models.SlugField(max_length=250)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -22,14 +17,10 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(
-        max_length=10,
-        choices=STATUS_CHOICES,
-        default='published')
     tags = TaggableManager()
 
     class Meta:
-        ordering = ('publish',)
+        ordering = ('-publish',)
 
     def __str__(self):
         return self.title
@@ -45,14 +36,20 @@ class Post(models.Model):
             ]
         )
 
+    # def get_url(self):
+    #     return reverse(
+    #         'posts:post_detail',
+    #         args=[self.publish.id]
+    #     )
+
 
 class Comment(models.Model):
-    posts = models.ForeignKey(
+    post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
         related_name='comments'
     )
-    username = models.CharField(max_length=120)
+    name = models.CharField(max_length=120)
     email = models.EmailField(blank=True, null=True)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -63,4 +60,4 @@ class Comment(models.Model):
         ordering = ('-created',)
 
     def __str__(self):
-        return 'Comment by {} on {}'.format(self.username, self.posts)
+        return 'Comment by {} on {}'.format(self.name, self.post)

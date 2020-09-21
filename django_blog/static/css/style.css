@@ -1,14 +1,28 @@
 .btn-outline-primary:hover {
     color: #007bff;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
 
 .btn-outline-success:hover {
     color: #28a745;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
 
 .btn-outline-danger:hover {
     color: #dc3545;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
+
+/*code {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    background-color: rgba(27, 31, 35, .05);*/
+/*    border-radius: 3px;*/
+
+/*}*/
+
+/*blockquote {*/
+/*    padding: 0 1em;*/
+/*    color: indianred;*/
+/*    border-left: .25em solid palevioletred;*/
+/*}*/

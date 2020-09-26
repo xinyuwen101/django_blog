@@ -15,7 +15,7 @@ def post_list(request, tag_slug=None):
     else:
         all_posts = Post.objects.all()
     tag_list = Tag.objects.all()
-    paginator = Paginator(all_posts, 4)
+    paginator = Paginator(all_posts, 5)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

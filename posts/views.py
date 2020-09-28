@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from taggit.models import Tag
 import markdown
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, redirect
+from taggit.models import Tag
 
-from .models import Post
 from .forms import CommentForm
+from .models import Post
 
 
 def post_list(request, tag_slug=None):
@@ -34,12 +34,10 @@ def post_list(request, tag_slug=None):
     return render(request, 'blog/posts/list.html', context)
 
 
-def post_detail(request, year, month, day, slug):
+def post_detail(request, id, slug):
     posts = Post.objects.filter(
-        publish__year=year,
-        publish__month=month,
-        publish__day=day,
-        slug=slug
+        id=id,
+        slug=slug,
     ).first()
 
     markdown_extensions = [
@@ -74,7 +72,7 @@ def post_detail(request, year, month, day, slug):
             new_comment = comment_form.save(commit=False)
             new_comment.post = posts
             new_comment.save()
-            return redirect('posts:post_detail', year=year, month=month, day=day, slug=slug)
+            return redirect('posts:post_detail', id=id, slug=slug)
     else:
         comment_form = CommentForm()
     tag_list = Tag.objects.all()

@@ -29,18 +29,10 @@ class Post(models.Model):
         return reverse(
             'posts:post_detail',
             args=[
-                self.publish.year,
-                self.publish.month,
-                self.publish.day,
+                self.id,
                 self.slug
             ]
         )
-
-    # def get_url(self):
-    #     return reverse(
-    #         'posts:post_detail',
-    #         args=[self.publish.id]
-    #     )
 
 
 class Comment(models.Model):

@@ -2,55 +2,65 @@
 
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static "blog/css/bootstrap.min.css" %}">
+    <!-- <link rel="stylesheet" href="{% static "blog/css/bootstrap.min.css" %}"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
     <!-- Highlight -->
     <link rel="stylesheet" href="{% static "blog/css/highlights_github.css" %}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static "blog/css/style.css" %}">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "blog/img/apple-touch-icon.png" %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "blog/img/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "blog/img/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "blog/img/site.webmanifest" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "blog/img/apple-touch-icon.png"
+    %}"> <link rel="icon" type="image/png" sizes="32x32" href="{% static
+    "blog/img/favicon-32x32.png" %}"> <link rel="icon" type="image/png" sizes="16x16" href="{%
+    static "blog/img/favicon-16x16.png" %}"> <link rel="manifest" href="{% static
+    "blog/img/site.webmanifest" %}">
 
     <!-- Title -->
     <title>{% block title %}{% endblock %}Blog</title>
-</head>
+  </head>
 
-<body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100">
+    <!-- Navbar -->
+    {% include 'blog/partials/navbar.html' %}
 
-<!-- Navbar -->
-{% include 'blog/partials/navbar.html' %}
-
-<!-- Main -->
-<main class="container">
-    <div class="row">
+    <!-- Main -->
+    <main class="container">
+      <div class="row">
         <!-- Main content-->
-        <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-        </div>
+        <div class="col-md-8">{% block content %} {% endblock %}</div>
         <!-- Sidebar -->
-        <div class="col-md-4 text-center">
-            {% include 'blog/partials/sidebar.html' %}
-        </div>
-    </div>
-</main>
+        <div class="col-md-4 text-center">{% include 'blog/partials/sidebar.html' %}</div>
+      </div>
+    </main>
 
-<!-- Footer -->
-{% include 'blog/partials/footer.html' %}
+    <!-- Footer -->
+    {% include 'blog/partials/footer.html' %}
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{% static "blog/js/jquery-3.5.1.slim.min.js" %}"></script>
-<script src="{% static "blog/js/bootstrap.bundle.min.js" %}"></script>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="{% static "blog/js/jquery-3.5.1.slim.min.js" %}"></script>
+<script src="{% static "blog/js/bootstrap.bundle.min.js" %}"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -11,4 +11,4 @@ Pygments==2.7.1
 pytz==2020.1
 sqlparse==0.3.1
 # static3==0.7.0
-# whitenoise==5.2.0
+whitenoise==5.2.0

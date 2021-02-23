@@ -23,11 +23,11 @@
         <!-- Blog list -->
         <div>
             {% for post in posts %}
-                <h3 class="mt-5">
+                <h3 class="my-5">
                     <a class="text-dark text-decoration-none" href="{{ post.get_url }}">{{ post.title }}</a>
                 </h3>
 
-                <div class="mt-3">
+                <div class="mt-4">
                     <small class="font-italic text-secondary">Posted by
                         <code>{{ post.author }}</code>
                         <span> on {{ post.publish }}</span>

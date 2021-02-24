@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import dj_database_url
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,8 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = ')lj@!&5o*pitaq9)idv5lh*^@ea3zej7phkjqos5x-+a=z7hzq'
 SECRET_KEY = os.environ.get(
-    "DJANGO_SECRET_KEY", ")lj@!&5o*pitaq9)idv5lh*^@ea3zej7phkjqos5x-+a=z7hzq"
-)
+    "DJANGO_SECRET_KEY", ")lj@!&5o*pitaq9)idv5lh*^@ea3zej7phkjqos5x-+a=z7hzq")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -82,16 +80,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -113,12 +115,10 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
 
 # Heroku: Update database configuration from $DATABASE_URL.
 

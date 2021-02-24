@@ -10,9 +10,8 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
     author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='blog_posts')
+        User, on_delete=models.CASCADE, related_name="blog_posts"
+    )
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -20,27 +19,17 @@ class Post(models.Model):
     tags = TaggableManager()
 
     class Meta:
-        ordering = ('-publish',)
+        ordering = ("-publish",)
 
     def __str__(self):
         return self.title
 
     def get_url(self):
-        return reverse(
-            'posts:post_detail',
-            args=[
-                self.id,
-                self.slug
-            ]
-        )
+        return reverse("posts:post_detail", args=[self.id, self.slug])
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(
-        Post,
-        on_delete=models.CASCADE,
-        related_name='comments'
-    )
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=120)
     email = models.EmailField(blank=True, null=True)
     body = models.TextField()
@@ -49,7 +38,7 @@ class Comment(models.Model):
     active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ("-created",)
 
     def __str__(self):
-        return 'Comment by {} on {}'.format(self.name, self.post)
+        return "Comment by {} on {}".format(self.name, self.post)
